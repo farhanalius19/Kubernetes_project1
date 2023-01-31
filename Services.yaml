@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydb
+spec:
+  ports:
+  - protocol: TCP
+    port: 3307
+    targetPort: 9377
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: wordpress
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: wordpress
